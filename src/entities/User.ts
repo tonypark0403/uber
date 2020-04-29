@@ -1,6 +1,5 @@
 import bcrypt from 'bcrypt';
 import { IsEmail } from 'class-validator';
-import config from 'src/config';
 import {
   BaseEntity,
   BeforeInsert,
@@ -11,6 +10,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import config from '../config';
 
 @Entity()
 class User extends BaseEntity {

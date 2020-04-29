@@ -6,7 +6,7 @@ const connectionOptions: ConnectionOptions = {
   database: config.DATABASE_NAME,
   synchronize: true,
   logging: true,
-  entities: ['entities/**/*.*'],
+  entities: ['src/entities/**/*.ts'],
   host: config.DB_HOST,
   port: config.DB_PORT,
   username: config.DB_USERNAME,
