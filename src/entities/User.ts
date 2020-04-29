@@ -24,8 +24,8 @@ class User extends BaseEntity {
   id: number;
 
   @IsEmail()
-  @Column({ type: 'text', unique: true })
-  email: string;
+  @Column({ type: 'text', nullable: true })
+  email: string | null;
 
   @Column({ type: 'boolean', default: false })
   verifiedEmail: boolean;
@@ -39,8 +39,8 @@ class User extends BaseEntity {
   @Column({ type: 'text' })
   bio: string;
 
-  @Column({ type: 'int' })
-  age: number;
+  @Column({ type: 'int', nullable: true })
+  age: number | null;
 
   @Column({ type: 'text' })
   password: string;
@@ -71,6 +71,9 @@ class User extends BaseEntity {
 
   @Column({ type: 'double precision', default: 0 })
   lastOrientation: number;
+
+  @Column({ type: 'text', nullable: true })
+  fbId: string;
 
   @ManyToOne((type) => Chat, (chat) => chat.participants)
   chat: Chat;
