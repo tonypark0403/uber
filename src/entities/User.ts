@@ -1,6 +1,10 @@
+import bcrypt from 'bcrypt';
 import { IsEmail } from 'class-validator';
+import config from 'src/config';
 import {
   BaseEntity,
+  BeforeInsert,
+  BeforeUpdate,
   Column,
   CreateDateColumn,
   Entity,
@@ -62,15 +66,28 @@ class User extends BaseEntity {
   @Column({ type: 'double precision', default: 0 })
   lastOrientation: number;
 
-  get fullName(): string {
-    return `${this.firstName} ${this.lastName}`;
-  }
-
   @CreateDateColumn()
   createdAt: string;
 
   @UpdateDateColumn()
   updatedAt: string;
+
+  get fullName(): string {
+    return `${this.firstName} ${this.lastName}`;
+  }
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  async savePassword(): Promise<void> {
+    if (this.password) {
+      const hashedPassword = await this.hashPassword(this.password);
+      this.password = hashedPassword;
+    }
+  }
+
+  private hashPassword(password: string): Promise<string> {
+    return bcrypt.hash(password, config.BCRYPT_ROUNDS);
+  }
 }
 
 export default User;
