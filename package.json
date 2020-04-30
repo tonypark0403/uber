@@ -10,16 +10,16 @@
     "types": "graphql-to-typescript ./src/schema.graphql ./src/types/graph.d.ts",
     "lint": "tslint -p tsconfig.json -c ./tslint.json",
     "format": "tslint-config-prettier-check ./tslint.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest -c jest.config.unit.js --passWithNoTests --forceExit --detectOpenHandles"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && yarn test"
     }
   },
   "lint-staged": {
     "**/*.ts": [
-      "yarn lint",
+      "yarn lint --fix",
       "git add"
     ]
   },
@@ -35,13 +35,16 @@
   "homepage": "https://github.com/tonypark0403/uber#readme",
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
+    "@types/jest": "^25.2.1",
     "@types/node": "^13.13.4",
     "babel-runtime": "^6.26.0",
     "class-validator": "^0.12.2",
     "gql-merge": "^0.0.6",
     "graphql-to-typescript": "^0.1.2",
     "husky": "^4.2.5",
+    "jest": "^25.5.2",
     "nodemon": "^2.0.3",
+    "ts-jest": "^25.4.0",
     "ts-node": "^8.9.1",
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
