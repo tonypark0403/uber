@@ -7,7 +7,7 @@ Uber app with GraphQL, Typescript and NodeJS
 ### Public functions
 
 - [x] Sign In / Sign Up with Facebook
-- [ ] Log In with Email
+- [x] Log In with Email
 - [ ] Start phone number Verification
 - [ ] Complete phone number Verification
 - [ ] Sign Up with Email
