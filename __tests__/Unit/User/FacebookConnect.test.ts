@@ -1,6 +1,6 @@
 import { request } from 'graphql-request';
-import config from '../../src/config';
-import databaseConn, { closeDatabaseConn } from '../../src/databaseConn';
+import config from '../../../src/config';
+import databaseConn, { closeDatabaseConn } from '../../../src/databaseConn';
 
 beforeAll(async () => {
   await databaseConn();
@@ -10,11 +10,13 @@ afterAll(async () => {
   await closeDatabaseConn();
 });
 
+const TEST = 'FacebookConnect';
+
 describe('Facebook', () => {
   it('Facebook / sign up', async () => {
     const facebookConnectMutation = `
       mutation {
-        FacebookConnect(
+        ${TEST}(
           firstName: "Tony",
           lastName: "Park",
           fbId: "262503123862234",
@@ -33,7 +35,7 @@ describe('Facebook', () => {
       facebookConnectMutation
     );
     expect(facebookConnectResponse).toEqual({
-      FacebookConnect: {
+      [TEST]: {
         error: null,
         ok: true,
         token: 'temporary new user',
