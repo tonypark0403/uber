@@ -7,7 +7,7 @@ export default async () => {
   }
   console.log('db connection :', name);
   const connectionOptions = await getConnectionOptions(name);
-  console.log('connectionOptions:', connectionOptions);
+  //   console.log('connectionOptions:', connectionOptions);
   await createConnection({ ...connectionOptions, name: 'default' });
 };
 
