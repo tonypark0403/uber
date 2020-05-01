@@ -17,7 +17,7 @@ describe('Email', () => {
     const EmailSignInMutation = `
       mutation {
         ${TEST}(
-          email: "c3dream@naver.com",
+          email: "test@naver.com",
           password: "test"
         ) {
             ok
