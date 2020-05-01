@@ -17,15 +17,15 @@ Uber app with GraphQL, Typescript and NodeJS
 ### Authentication:
 
 - [x] Generate JWT
-- [ ] Verify JWT
+- [x] Verify JWT
 
 ---
 
 ### Private functions
 
-- [ ] Verify Email
-- [ ] Get my Profile
+- [x] Get my Profile
 - [ ] Update my Profile
+- [ ] Verify Email
 - [ ] Toggle Driving Mode
 - [ ] Report Location / Orientation
 - [ ] Add Place
