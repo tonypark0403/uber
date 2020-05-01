@@ -16,7 +16,7 @@ Uber app with GraphQL, Typescript and NodeJS
 
 ### Authentication:
 
-- [ ] Generate JWT
+- [x] Generate JWT
 - [ ] Verify JWT
 
 ---
