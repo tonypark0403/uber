@@ -4,6 +4,7 @@ import {
 } from 'src/types/graph';
 import { Resolvers } from 'src/types/resolvers';
 import User from '../../../entities/User';
+import createJWT from '../../../utils/createJWT';
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -16,10 +17,11 @@ const resolvers: Resolvers = {
       try {
         const existingUser = await User.findOne({ fbId });
         if (existingUser) {
+          const token = createJWT(existingUser.id);
           return {
             ok: true,
             error: null,
-            token: 'temporary existing user',
+            token,
           };
         } else {
           const newUser = await User.create({
@@ -27,11 +29,11 @@ const resolvers: Resolvers = {
             profilePhoto: `http://graph.facebook.com/${fbId}/picture?type=square`,
           }).save();
           if (newUser) {
-            // console.log('newUser');
+            const token = createJWT(newUser.id);
             return {
               ok: true,
               error: null,
-              token: 'temporary new user',
+              token,
             };
           } else {
             throw Error('not available to create new');

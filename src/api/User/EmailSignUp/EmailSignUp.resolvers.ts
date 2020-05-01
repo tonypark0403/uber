@@ -4,6 +4,8 @@ import {
   EmailSignUpMutationArgs,
   EmailSignUpResponse,
 } from '../../../types/graph';
+import createJWT from '../../../utils/createJWT';
+
 const resolvers: Resolvers = {
   Mutation: {
     EmailSignUp: async (
@@ -20,11 +22,12 @@ const resolvers: Resolvers = {
             token: null,
           };
         } else {
-          await User.create({ ...args }).save();
+          const newUser = await User.create({ ...args }).save();
+          const token = createJWT(newUser.id);
           return {
             ok: true,
             error: null,
-            token: 'Coming soon with new user',
+            token,
           };
         }
       } catch (error) {

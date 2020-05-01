@@ -4,6 +4,7 @@ import {
   EmailSignInMutationArgs,
   EmailSignInResponse,
 } from '../../../types/graph';
+import createJWT from '../../../utils/createJWT';
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -21,6 +22,7 @@ const resolvers: Resolvers = {
             token: null,
           };
         }
+        const token = createJWT(user.id);
         const checkPassword = await user.comparePassword(password);
         if (!checkPassword) {
           return {
@@ -32,7 +34,7 @@ const resolvers: Resolvers = {
         return {
           ok: true,
           error: null,
-          token: 'Coming soon',
+          token,
         };
       } catch (error) {
         return {
