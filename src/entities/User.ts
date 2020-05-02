@@ -15,6 +15,7 @@ import {
 import config from '../config';
 import Chat from './Chat';
 import Message from './Message';
+import Place from './Place';
 import Ride from './Ride';
 
 @Entity()
@@ -85,6 +86,9 @@ class User extends BaseEntity {
 
   @OneToMany((type) => Ride, (ride) => ride.driver)
   ridesAsDriver: Ride[];
+
+  @OneToMany((type) => Place, (place) => place.user)
+  places: Place[];
 
   @CreateDateColumn()
   createdAt: string;
