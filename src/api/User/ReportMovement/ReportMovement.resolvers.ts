@@ -1,4 +1,5 @@
 import { Resolvers } from 'src/types/resolvers';
+import config from '../../../config';
 import User from '../../../entities/User';
 import {
   ReportMovementMutationArgs,
@@ -12,12 +13,16 @@ const resolvers: Resolvers = {
       async (
         _,
         args: ReportMovementMutationArgs,
-        { req }
+        { req, pubSub }
       ): Promise<ReportMovementResponse> => {
         const user: User = req.user;
         const notNull = cleanNullArgs(args);
         try {
           await User.update({ id: user.id }, { ...notNull });
+          pubSub.publish(config.CHANNEL.DRIVERUPDATE, {
+            DriversSubscription: user,
+          });
+          // DriversSubscription should be the same name for subscription graphql(DriversSubscription)
           return {
             ok: true,
             error: null,

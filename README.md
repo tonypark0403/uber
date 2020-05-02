@@ -35,7 +35,7 @@ Uber app with GraphQL, Typescript and NodeJS
 - [x] Delete Place
 - [x] Get My Place
 - [x] See Nearby Drivers
-- [ ] Subscribe to Nearby Drivers
+- [x] Subscribe to Nearby Drivers
 - [ ] Request a Ride
 - [ ] Get Nearby Rides Requests
 - [ ] Subscribe to Nearby Ride Requests

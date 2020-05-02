@@ -1,6 +1,6 @@
 import cors from 'cors';
 import { NextFunction, Response } from 'express';
-import { GraphQLServer } from 'graphql-yoga';
+import { GraphQLServer, PubSub } from 'graphql-yoga';
 import helmet from 'helmet';
 import logger from 'morgan';
 import config from './config';
@@ -35,12 +35,16 @@ class App {
   };
 
   public app: GraphQLServer;
+  public pubSub: any;
   constructor() {
+    this.pubSub = new PubSub(); // this is only for demo, in production redis or memcached should be used..
+    this.pubSub.ee.setMaxListeners(99);
     this.app = new GraphQLServer({
       schema,
       context: (express) => {
         return {
           req: express.request,
+          pubSub: this.pubSub,
         };
       },
     });
