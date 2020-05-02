@@ -26,8 +26,8 @@ Uber app with GraphQL, Typescript and NodeJS
 - [x] Get my Profile
 - [x] Request Email Verification
 - [x] Complete Email Verification
-- [ ] Update my Profile
-- [ ] Verify Email
+- [x] Update my Profile
+- [x] Verify Email
 - [ ] Toggle Driving Mode
 - [ ] Report Location / Orientation
 - [ ] Add Place

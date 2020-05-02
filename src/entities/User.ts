@@ -23,7 +23,7 @@ class User extends BaseEntity {
   id: number;
 
   @IsEmail()
-  @Column({ type: 'text', nullable: true })
+  @Column({ type: 'text', nullable: true, unique: true })
   email: string | null;
 
   @Column({ type: 'boolean', default: false })
@@ -44,7 +44,7 @@ class User extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   password: string;
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ type: 'text', nullable: true, unique: true })
   phoneNumber: string;
 
   @Column({ type: 'boolean', default: false })
