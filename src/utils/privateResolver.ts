@@ -5,7 +5,7 @@ const privateResolver = (resolverFunction) => async (
   info
 ) => {
   if (!context.req.user) {
-    throw new Error('No JWT. Please check your jwt or log in first!');
+    throw new Error('No JWT. Please check your jwt or sign up first!');
   }
   const resolved = await resolverFunction(parent, args, context, info);
   return resolved;
