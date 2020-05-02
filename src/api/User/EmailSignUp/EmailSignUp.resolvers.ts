@@ -36,7 +36,7 @@ const resolvers: Resolvers = {
                 target: 'EMAIL',
               }).save();
               await sendVerificationEmail(
-                'c3dream@naver.com',
+                newUser.email,
                 newUser.fullName,
                 emailVerification.key
               );

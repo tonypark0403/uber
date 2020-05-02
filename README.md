@@ -24,8 +24,8 @@ Uber app with GraphQL, Typescript and NodeJS
 ### Private functions
 
 - [x] Get my Profile
-- [ ] Request Email Verification
-- [ ] Verify Email
+- [x] Request Email Verification
+- [ ] Complete Email Verification
 - [ ] Update my Profile
 - [ ] Verify Email
 - [ ] Toggle Driving Mode
