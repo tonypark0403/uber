@@ -31,8 +31,9 @@ Uber app with GraphQL, Typescript and NodeJS
 - [x] Toggle Driving Mode
 - [x] Report Location / Orientation
 - [x] Add Place
-- [ ] Edit Place
+- [x] Edit Place
 - [ ] Delete Place
+- [ ] Get My Place
 - [ ] See Nearby Drivers
 - [ ] Subscribe to Nearby Drivers
 - [ ] Request a Ride
