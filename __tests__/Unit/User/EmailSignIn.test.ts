@@ -29,7 +29,7 @@ describe('Email', () => {
     `;
 
     const emailSignInResponse = await request(
-      `http://127.0.0.1:4000${config.GRAPHQL_ENDPOINT}`,
+      `http://127.0.0.1:4000${config.GRAPHQL.GRAPHQL_ENDPOINT}`,
       EmailSignInMutation
     );
     expect(emailSignInResponse).toEqual({

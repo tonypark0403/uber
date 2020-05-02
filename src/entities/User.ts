@@ -110,7 +110,7 @@ class User extends BaseEntity {
   }
 
   private hashPassword(password: string): Promise<string> {
-    return bcrypt.hash(password, config.BCRYPT_ROUNDS);
+    return bcrypt.hash(password, config.AUTH.BCRYPT_ROUNDS);
   }
 }
 

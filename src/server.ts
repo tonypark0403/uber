@@ -10,8 +10,8 @@ import databaseConn from './databaseConn';
 const PORT: number | string = config.PORT;
 const appOptions: Options = {
   port: PORT,
-  playground: config.PLAYGROUND_ENDPOINT,
-  endpoint: config.GRAPHQL_ENDPOINT,
+  playground: config.GRAPHQL.PLAYGROUND_ENDPOINT,
+  endpoint: config.GRAPHQL.GRAPHQL_ENDPOINT,
 };
 
 const handleAppStart = () => console.log(`Listening on port ${PORT}`);

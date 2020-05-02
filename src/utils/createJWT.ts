@@ -6,7 +6,7 @@ const createJWT = (id: number): string => {
     {
       id,
     },
-    config.JWT_SECRET
+    config.AUTH.JWT_SECRET
   );
   return token;
 };

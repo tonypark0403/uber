@@ -1,13 +1,16 @@
 import Twilio from 'twilio';
 import config from '../config';
 
-const twilioClient = Twilio(config.TWILIO_SID, config.TWILIO_TOKEN);
+const twilioClient = Twilio(
+  config.TWILIO.TWILIO_SID,
+  config.TWILIO.TWILIO_TOKEN
+);
 
 const sendSMS = (to: string, body: string): Promise<any> => {
   return twilioClient.messages.create({
     body,
     to,
-    from: config.TWILIO_PHONE,
+    from: config.TWILIO.TWILIO_PHONE,
   });
 };
 
