@@ -32,7 +32,7 @@ Uber app with GraphQL, Typescript and NodeJS
 - [x] Report Location / Orientation
 - [x] Add Place
 - [x] Edit Place
-- [ ] Delete Place
+- [x] Delete Place
 - [ ] Get My Place
 - [ ] See Nearby Drivers
 - [ ] Subscribe to Nearby Drivers
