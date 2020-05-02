@@ -1,0 +1,40 @@
+import { Resolvers } from 'src/types/resolvers';
+import User from '../../../entities/User';
+import { GetMyPlacesResponse } from '../../../types/graph';
+import privateResolver from '../../../utils/privateResolver';
+
+const resolvers: Resolvers = {
+  Query: {
+    GetMyPlaces: privateResolver(
+      async (_, __, { req }): Promise<GetMyPlacesResponse> => {
+        try {
+          const user: User | undefined = await User.findOne(
+            { id: req.user.id },
+            { relations: ['places'] }
+          );
+          if (user) {
+            return {
+              ok: true,
+              places: user.places,
+              error: null,
+            };
+          } else {
+            return {
+              ok: false,
+              error: 'User is not found',
+              places: null,
+            };
+          }
+        } catch (error) {
+          return {
+            ok: false,
+            error: error.message,
+            places: null,
+          };
+        }
+      }
+    ),
+  },
+};
+
+export default resolvers;

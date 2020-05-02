@@ -4,7 +4,7 @@ import {
   UpdateMyProfileMutationArgs,
   UpdateMyProfileResponse,
 } from '../../../types/graph';
-import cleanNullArgs from '../../../utils/clearnNullArgs';
+import cleanNullArgs from '../../../utils/cleanNullArgs';
 import privateResolver from '../../../utils/privateResolver';
 const resolvers: Resolvers = {
   Mutation: {
