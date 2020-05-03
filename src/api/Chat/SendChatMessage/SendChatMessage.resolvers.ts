@@ -1,4 +1,5 @@
 import { Resolvers } from 'src/types/resolvers';
+import config from '../../../config';
 import Chat from '../../../entities/Chat';
 import Message from '../../../entities/Message';
 import User from '../../../entities/User';
@@ -14,7 +15,7 @@ const resolvers: Resolvers = {
       async (
         _,
         args: SendChatMessageMutationArgs,
-        { req }
+        { req, pubSub }
       ): Promise<SendChatMessageResponse> => {
         const user: User = req.user;
         try {
@@ -28,6 +29,9 @@ const resolvers: Resolvers = {
                 chat,
                 user,
               }).save();
+              pubSub.publish(config.SUBSCRIPTION_CHANNEL.NEWCHATMESSAGE, {
+                [config.SUBSCRIPTION.MESSAGESUBSCRIPTION]: message,
+              });
               return {
                 ok: true,
                 error: null,
