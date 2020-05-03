@@ -41,10 +41,13 @@ class App {
     this.pubSub.ee.setMaxListeners(99);
     this.app = new GraphQLServer({
       schema,
-      context: (express) => {
+      context: (gqlRequest) => {
+        // console.log('express:', gqlRequest.connection.context.currentUser);
+        const { connection: { context = null } = {} } = gqlRequest;
         return {
-          req: express.request,
+          req: gqlRequest.request,
           pubSub: this.pubSub,
+          context,
         };
       },
     });
