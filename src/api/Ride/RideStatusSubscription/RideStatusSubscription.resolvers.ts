@@ -16,7 +16,7 @@ const resolvers = {
               passengerId,
             },
           } = payload;
-          return user.id === driverId || user.id === passengerId; // driver랑 passenger만 subscription받음
+          return user.id === driverId || user.id === passengerId;
         }
       ),
     },

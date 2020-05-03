@@ -1,44 +1,44 @@
 import { Resolvers } from 'src/types/resolvers';
-import Ride from '../../../entities/Ride';
+import Chat from '../../../entities/Chat';
 import User from '../../../entities/User';
-import { GetRideResponse } from '../../../types/graph';
+import { GetChatQueryArgs, GetChatResponse } from '../../../types/graph';
 import privateResolver from '../../../utils/privateResolver';
 
 const resolvers: Resolvers = {
   Query: {
-    GetRide: privateResolver(
-      async (_, args, { req }): Promise<GetRideResponse> => {
+    GetChat: privateResolver(
+      async (_, args: GetChatQueryArgs, { req }): Promise<GetChatResponse> => {
         const user: User = req.user;
         try {
-          const ride: Ride | undefined = await Ride.findOne({
-            id: args.rideId,
+          const chat: Chat | undefined = await Chat.findOne({
+            id: args.chatId,
           });
-          if (ride) {
-            if (ride.passengerId === user.id || ride.driverId === user.id) {
+          if (chat) {
+            if (chat.passengerId === user.id || chat.driverId === user.id) {
               return {
                 ok: true,
                 error: null,
-                ride,
+                chat,
               };
             } else {
               return {
                 ok: false,
-                error: 'Not Authorized',
-                ride,
+                error: 'Not Authorized to see this chat',
+                chat,
               };
             }
           } else {
             return {
               ok: false,
-              error: 'Ride is not found',
-              ride: null,
+              error: 'Chat is not found',
+              chat: null,
             };
           }
         } catch (error) {
           return {
             ok: false,
             error: error.message,
-            ride: null,
+            chat: null,
           };
         }
       }

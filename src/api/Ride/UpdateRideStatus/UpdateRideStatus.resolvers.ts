@@ -1,5 +1,6 @@
 import { Resolvers } from 'src/types/resolvers';
 import config from '../../../config';
+import Chat from '../../../entities/Chat';
 import Ride from '../../../entities/Ride';
 import User from '../../../entities/User';
 import {
@@ -22,14 +23,21 @@ const resolvers: Resolvers = {
           try {
             let ride: Ride | undefined;
             if (args.status === config.RIDESTATUS.ACCEPTED) {
-              ride = await Ride.findOne({
-                id: args.rideId,
-                status: config.RIDESTATUS.REQUESTING,
-              });
+              ride = await Ride.findOne(
+                {
+                  id: args.rideId,
+                  status: config.RIDESTATUS.REQUESTING,
+                },
+                { relations: ['passenger'] }
+              );
               if (ride) {
                 ride.driver = user;
                 user.isTaken = true;
                 user.save();
+                await Chat.create({
+                  driver: user,
+                  passenger: ride.passenger,
+                }).save();
               }
             } else {
               ride = await Ride.findOne({
