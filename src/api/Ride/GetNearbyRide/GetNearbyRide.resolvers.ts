@@ -1,15 +1,10 @@
 import { Resolvers } from 'src/types/resolvers';
 import { Between } from 'typeorm';
+import config from '../../../config';
 import Ride from '../../../entities/Ride';
 import User from '../../../entities/User';
 import { GetNearbyRideResponse } from '../../../types/graph';
 import privateResolver from '../../../utils/privateResolver';
-
-// const ACCEPTED = 'ACCEPTED';
-// const FINISHED = 'FINISHED';
-// const CANCELED = 'CANCELED';
-const REQUESTING = 'REQUESTING';
-// const ONROUTE = 'ONROUTE';
 
 const resolvers: Resolvers = {
   Query: {
@@ -26,7 +21,7 @@ const resolvers: Resolvers = {
             //   pickUpLng: Between(lastLng - 0.05, lastLng + 0.05),
             // });
             const ride = await Ride.findOne({
-              status: REQUESTING,
+              status: config.RIDESTATUS.REQUESTING,
               pickUpLat: Between(lastLat - 0.05, lastLat + 0.05),
               pickUpLng: Between(lastLng - 0.05, lastLng + 0.05),
             });
