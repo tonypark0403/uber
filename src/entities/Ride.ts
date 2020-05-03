@@ -4,10 +4,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import Chat from './Chat';
 import User from './User';
 
 const ACCEPTED = 'ACCEPTED';
@@ -61,11 +64,18 @@ class Ride extends BaseEntity {
   @Column({ nullable: true })
   driverId: number;
 
+  @Column({ nullable: true })
+  chatId: number;
+
   @ManyToOne((type) => User, (user) => user.ridesAsPassenger)
   passenger: User;
 
   @ManyToOne((type) => User, (user) => user.ridesAsDriver, { nullable: true })
   driver: User;
+
+  @OneToOne((type) => Chat, (chat) => chat.ride, { nullable: true })
+  @JoinColumn()
+  chat: Chat;
 
   @CreateDateColumn()
   createdAt: string;

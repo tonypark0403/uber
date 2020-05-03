@@ -16,7 +16,7 @@ const resolvers: Resolvers = {
         { req, pubSub }
       ): Promise<RequestRideResponse> => {
         const user: User = req.user;
-        if (!user.isRiding) {
+        if (!user.isRiding && !user.isDriving) {
           try {
             const ride: Ride = await Ride.create({
               ...args,
@@ -42,7 +42,8 @@ const resolvers: Resolvers = {
         } else {
           return {
             ok: false,
-            error: "'You can't request two rides",
+            error:
+              "You can't request two rides or driver cannot request a ride",
             ride: null,
           };
         }
