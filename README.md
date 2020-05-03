@@ -41,6 +41,7 @@ Uber app with GraphQL, Typescript and NodeJS
 - [x] Subscribe to Nearby Ride Requests
 - [x] Update Ride Status
 - [x] Get Ride
+- [x] Subscribe to Ride Status
 - [ ] Get Chat Room Messages
 - [ ] Subscribe to Chat Room Messages
 - [ ] Send a Chat Message

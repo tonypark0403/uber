@@ -14,7 +14,7 @@ const resolvers: Resolvers = {
       async (
         _,
         args: UpdateRideStatusMutationArgs,
-        { req }
+        { req, pubSub }
       ): Promise<UpdateRideStatusResponse> => {
         const user: User = req.user;
         // Only driver can update the status
@@ -40,6 +40,9 @@ const resolvers: Resolvers = {
             if (ride) {
               ride.status = args.status;
               ride.save();
+              pubSub.publish(config.SUBSCRIPTION_CHANNEL.RIDEUPDATE, {
+                [config.SUBSCRIPTION.RIDESTATUSSUBSCRIPTION]: ride,
+              });
               return {
                 ok: true,
                 error: null,
