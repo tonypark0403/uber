@@ -7,7 +7,7 @@ const resolvers = {
     DriversSubscription: {
       subscribe: withFilter(
         (_, __, { pubSub }) =>
-          pubSub.asyncIterator(config.CHANNEL.DRIVERUPDATE),
+          pubSub.asyncIterator(config.SUBSCRIPTION_CHANNEL.DRIVERUPDATE),
         (payload, _, { context }) => {
           // console.log(
           //   'This is coming from the ReportMovement Resolver(payload):',
@@ -16,7 +16,7 @@ const resolvers = {
           // console.log('Listening(context):', context);
           const user: User = context.currentUser;
           const {
-            DriversSubscription: {
+            [config.SUBSCRIPTION.DRIVERSSUBSCRIPTION]: {
               lastLat: driverLastLat,
               lastLng: driverLastLng,
             },

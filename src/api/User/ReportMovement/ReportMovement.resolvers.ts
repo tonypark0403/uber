@@ -20,8 +20,8 @@ const resolvers: Resolvers = {
         try {
           await User.update({ id: user.id }, { ...notNull });
           const updatedUser = await User.findOne({ id: user.id });
-          pubSub.publish(config.CHANNEL.DRIVERUPDATE, {
-            DriversSubscription: updatedUser,
+          pubSub.publish(config.SUBSCRIPTION_CHANNEL.DRIVERUPDATE, {
+            [config.SUBSCRIPTION.DRIVERSSUBSCRIPTION]: updatedUser,
           });
           // DriversSubscription should be the same name for subscription graphql(DriversSubscription)
           return {

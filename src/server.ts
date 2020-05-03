@@ -12,9 +12,8 @@ const appOptions: Options = {
   playground: config.GRAPHQL.PLAYGROUND_ENDPOINT,
   endpoint: config.GRAPHQL.GRAPHQL_ENDPOINT,
   subscriptions: {
-    path: config.CHANNEL.SUBSCRIPTION_ENDPOINT,
+    path: config.SUBSCRIPTION.SUBSCRIPTION_ENDPOINT,
     onConnect: async (connectionParams) => {
-      // onConnect는 currentUser를 가지고 있는 object 리턴!!!
       // console.log('connectionParams:', connectionParams);
       const token = connectionParams[config.AUTH.TOKEN_COOKIE];
       if (token) {

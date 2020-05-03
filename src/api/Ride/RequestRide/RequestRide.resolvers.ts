@@ -1,4 +1,5 @@
 import { Resolvers } from 'src/types/resolvers';
+import config from '../../../config';
 import Ride from '../../../entities/Ride';
 import User from '../../../entities/User';
 import {
@@ -12,7 +13,7 @@ const resolvers: Resolvers = {
       async (
         _,
         args: RequestRideMutationArgs,
-        { req }
+        { req, pubSub }
       ): Promise<RequestRideResponse> => {
         const user: User = req.user;
         try {
@@ -20,6 +21,9 @@ const resolvers: Resolvers = {
             ...args,
             passenger: user,
           }).save();
+          pubSub.publish(config.SUBSCRIPTION_CHANNEL.RIDEREQUEST, {
+            [config.SUBSCRIPTION.NEARBYRIDESUBSCRIPTION]: ride,
+          });
           return {
             ok: true,
             error: null,
