@@ -22,7 +22,6 @@ const resolvers: Resolvers = {
             token: null,
           };
         }
-        const token = createJWT(user.id);
         const checkPassword = await user.comparePassword(password);
         if (!checkPassword) {
           return {
@@ -31,6 +30,7 @@ const resolvers: Resolvers = {
             token: null,
           };
         }
+        const token = createJWT(user.id);
         return {
           ok: true,
           error: null,
