@@ -31,6 +31,13 @@ const resolvers: Resolvers = {
           };
         }
         const token = createJWT(user.id);
+        if (!user.verifiedEmail) {
+          return {
+            ok: false,
+            error: 'Not Email validated. Please verify it first',
+            token,
+          };
+        }
         return {
           ok: true,
           error: null,
