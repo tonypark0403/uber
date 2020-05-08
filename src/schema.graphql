@@ -43,6 +43,7 @@ type Mutation {
   StartPhoneVerification(phoneNumber: String!): StartPhoneVerificationResponse
   ToggleDrivingMode: ToggleDrivingModeResponse!
   UpdateMyProfile(firstName: String, lastName: String, email: String, password: String, profilePhoto: String, age: Int): UpdateMyProfileResponse!
+  UpdatePassword(email: String!, password: String!): UpdatePasswordResponse!
 }
 
 type Chat {
@@ -247,6 +248,11 @@ type ToggleDrivingModeResponse {
 }
 
 type UpdateMyProfileResponse {
+  ok: Boolean!
+  error: String
+}
+
+type UpdatePasswordResponse {
   ok: Boolean!
   error: String
 }
