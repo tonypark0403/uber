@@ -56,6 +56,13 @@ const resolvers: Resolvers = {
               pubSub.publish(config.SUBSCRIPTION_CHANNEL.RIDEUPDATE, {
                 [config.SUBSCRIPTION.RIDESTATUSSUBSCRIPTION]: ride,
               });
+              if (ride.status === config.RIDESTATUS.FINISHED) {
+                user.isTaken = false;
+                await user.save();
+                const passenger: User = ride.passenger;
+                passenger.isRiding = false;
+                await passenger.save();
+              }
               return {
                 ok: true,
                 error: null,
