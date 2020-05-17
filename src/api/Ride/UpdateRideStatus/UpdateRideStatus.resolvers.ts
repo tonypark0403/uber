@@ -28,7 +28,7 @@ const resolvers: Resolvers = {
                   id: args.rideId,
                   status: config.RIDESTATUS.REQUESTING,
                 },
-                { relations: ['passenger'] }
+                { relations: ['passenger', 'driver'] }
               );
               if (ride) {
                 ride.driver = user;
@@ -42,10 +42,13 @@ const resolvers: Resolvers = {
                 ride.save();
               }
             } else {
-              ride = await Ride.findOne({
-                id: args.rideId,
-                driver: user,
-              });
+              ride = await Ride.findOne(
+                {
+                  id: args.rideId,
+                  driver: user,
+                },
+                { relations: ['passenger', 'driver'] }
+              );
             }
             if (ride) {
               ride.status = args.status;

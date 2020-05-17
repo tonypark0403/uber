@@ -63,6 +63,7 @@ type Message {
   id: Int!
   text: String!
   chatId: Int
+  userId: Int
   chat: Chat!
   user: User!
   createdAt: String!
@@ -137,7 +138,7 @@ type Ride {
   driverId: Int
   chatId: Int
   passenger: User!
-  driver: User
+  driver: User!
   chat: Chat
   createdAt: String!
   updatedAt: String
