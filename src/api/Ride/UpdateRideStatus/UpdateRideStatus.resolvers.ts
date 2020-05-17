@@ -56,23 +56,27 @@ const resolvers: Resolvers = {
               return {
                 ok: true,
                 error: null,
+                rideId: ride.id,
               };
             } else {
               return {
                 ok: false,
                 error: "Can't update ride",
+                rideId: null,
               };
             }
           } catch (error) {
             return {
               ok: false,
               error: error.message,
+              rideId: null,
             };
           }
         } else {
           return {
             ok: false,
             error: 'You are not driving',
+            rideId: null,
           };
         }
       }
