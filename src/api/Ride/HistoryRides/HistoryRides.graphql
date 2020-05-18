@@ -1,0 +1,9 @@
+type HistoryRidesResponse {
+  ok: Boolean!
+  error: String
+  rides: [Ride]
+}
+
+type Query {
+  HistoryRides: HistoryRidesResponse!
+}
