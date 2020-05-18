@@ -1,5 +1,5 @@
 import { ConnectionOptions } from 'typeorm';
-import config from './src/config';
+import config from './config';
 
 const connectionOptions: ConnectionOptions[] = [
   {
@@ -43,4 +43,5 @@ const connectionOptions: ConnectionOptions[] = [
   },
 ];
 
-export = connectionOptions;
+// export = connectionOptions;
+export default connectionOptions;

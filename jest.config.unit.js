@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test';
+
 module.exports = {
   setupFilesAfterEnv: ['./jest.setup.js'],
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
@@ -6,9 +8,9 @@ module.exports = {
   },
   globals: {
     'ts-jest': {
-      tsConfig: 'tsconfig.json',
+      tsConfig: './tsconfig.json',
     },
   },
-  testRegex: '__tests__/Unit/.*.(test|spec)\\.[jt]s?$',
+  testRegex: '__tests__/skip_Unit/.*.(test|spec)\\.[jt]s?$',
   cacheDirectory: '.jest/cache',
 };

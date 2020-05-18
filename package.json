@@ -10,7 +10,11 @@
     "types": "graphql-to-typescript ./src/schema.graphql ./src/types/graph.d.ts",
     "lint": "tslint -p tsconfig.json -c ./tslint.json",
     "format": "tslint-config-prettier-check ./tslint.json",
-    "test": "jest -c jest.config.unit.js --passWithNoTests --forceExit --detectOpenHandles"
+    "test": "jest -c jest.config.unit.js --passWithNoTests --forceExit --detectOpenHandles",
+    "prebuild": "rm -rf dist",
+    "build": "tsc",
+    "postbuild": "cd src && copyfiles ./api/**/*.graphql ../dist",
+    "start": "cd dist && node ."
   },
   "husky": {
     "hooks": {
@@ -40,9 +44,9 @@
     "@types/mailgun-js": "^0.22.4",
     "@types/node": "^13.13.4",
     "@types/twilio": "^2.11.0",
-    "apollo-boost": "^0.4.7",
     "babel-runtime": "^6.26.0",
     "class-validator": "^0.12.2",
+    "copyfiles": "^2.2.0",
     "gql-merge": "^0.0.6",
     "graphql-to-typescript": "^0.1.2",
     "husky": "^4.2.5",
@@ -71,6 +75,7 @@
     "morgan": "^1.10.0",
     "pg": "^8.0.3",
     "twilio": "^3.43.0",
-    "typeorm": "^0.2.24"
+    "typeorm": "^0.2.24",
+    "apollo-boost": "^0.4.7"
   }
 }
