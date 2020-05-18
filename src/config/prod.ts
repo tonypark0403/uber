@@ -29,8 +29,8 @@ const config: Config = {
   },
   TWILIO: {
     TWILIO_TOKEN: process.env.TWILIO_TOKEN || '',
-    TWILIO_SID: process.env.TWILIO_TOKEN || '',
-    TWILIO_PHONE: process.env.TWILIO_TOKEN || '',
+    TWILIO_SID: process.env.TWILIO_SID || '',
+    TWILIO_PHONE: process.env.TWILIO_PHONE || '',
   },
   MAILGUN: {
     APIKEY: process.env.APIKEY || '',
