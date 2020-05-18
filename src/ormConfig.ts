@@ -1,3 +1,4 @@
+import path from 'path';
 import { ConnectionOptions } from 'typeorm';
 import config from './config';
 
@@ -8,7 +9,8 @@ const connectionOptions: ConnectionOptions[] = [
     database: config.DB.DATABASE_NAME,
     synchronize: true,
     logging: true,
-    entities: ['src/entities/**/*.ts'],
+    // entities: ['src/entities/**/*.ts'],
+    entities: [path.join(__dirname, 'entities/**/*.[jt]s')],
     host: config.DB.DB_HOST,
     port: config.DB.DB_PORT,
     username: config.DB.DB_USERNAME,
@@ -27,7 +29,7 @@ const connectionOptions: ConnectionOptions[] = [
     synchronize: true,
     dropSchema: true,
     logging: false,
-    entities: [__dirname + '/src/entities/**/*.ts'],
+    entities: [path.join(__dirname, 'entities/**/*.[jt]s')],
     // subscribers: [__dirname + '/src/subscribers/**/*.ts'],
     // migrations: [__dirname + '/databases/migrations/**/*.ts'],
     host: config.TESTDB.DB_HOST,
@@ -42,6 +44,5 @@ const connectionOptions: ConnectionOptions[] = [
     },
   },
 ];
-
 // export = connectionOptions;
 export default connectionOptions;
