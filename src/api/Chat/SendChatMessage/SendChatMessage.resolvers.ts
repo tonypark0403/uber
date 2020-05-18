@@ -1,4 +1,3 @@
-import { Resolvers } from 'src/types/resolvers';
 import config from '../../../config';
 import Chat from '../../../entities/Chat';
 import Message from '../../../entities/Message';
@@ -7,6 +6,7 @@ import {
   SendChatMessageMutationArgs,
   SendChatMessageResponse,
 } from '../../../types/graph';
+import { Resolvers } from '../../../types/resolvers';
 import privateResolver from '../../../utils/privateResolver';
 
 const resolvers: Resolvers = {

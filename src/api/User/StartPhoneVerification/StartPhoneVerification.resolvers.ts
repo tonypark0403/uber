@@ -1,9 +1,9 @@
-import { Resolvers } from 'src/types/resolvers';
 import Verification from '../../../entities/Verification';
 import {
   StartPhoneVerificationMutationArgs,
   StartPhoneVerificationResponse,
 } from '../../../types/graph';
+import { Resolvers } from '../../../types/resolvers';
 import { sendVerificationSMS } from '../../../utils/sendSMS';
 
 const resolvers: Resolvers = {

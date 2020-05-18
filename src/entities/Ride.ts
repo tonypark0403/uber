@@ -1,4 +1,3 @@
-import { rideStatus } from 'src/types/types';
 import {
   BaseEntity,
   Column,
@@ -10,6 +9,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { rideStatus } from '../types/types';
 import Chat from './Chat';
 import User from './User';
 

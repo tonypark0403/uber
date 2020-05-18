@@ -1,7 +1,7 @@
-import { Resolvers } from 'src/types/resolvers';
 import Chat from '../../../entities/Chat';
 import User from '../../../entities/User';
 import { GetChatQueryArgs, GetChatResponse } from '../../../types/graph';
+import { Resolvers } from '../../../types/resolvers';
 import privateResolver from '../../../utils/privateResolver';
 
 const resolvers: Resolvers = {

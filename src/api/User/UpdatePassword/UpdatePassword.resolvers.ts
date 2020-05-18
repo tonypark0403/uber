@@ -1,9 +1,9 @@
-import { Resolvers } from 'src/types/resolvers';
 import User from '../../../entities/User';
 import {
   UpdatePasswordMutationArgs,
   UpdatePasswordResponse,
 } from '../../../types/graph';
+import { Resolvers } from '../../../types/resolvers';
 const resolvers: Resolvers = {
   Mutation: {
     UpdatePassword: async (

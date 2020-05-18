@@ -1,4 +1,3 @@
-import { verificationTarget } from 'src/types/types';
 import {
   BaseEntity,
   BeforeInsert,
@@ -8,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { verificationTarget } from '../types/types';
 
 const PHONE = 'PHONE';
 const EMAIL = 'EMAIL';

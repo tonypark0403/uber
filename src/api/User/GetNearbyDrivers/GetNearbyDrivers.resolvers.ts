@@ -1,7 +1,7 @@
-import { GetNearbyDriversResponse } from 'src/types/graph';
-import { Resolvers } from 'src/types/resolvers';
 import { Between } from 'typeorm';
 import User from '../../../entities/User';
+import { GetNearbyDriversResponse } from '../../../types/graph';
+import { Resolvers } from '../../../types/resolvers';
 import privateResolver from '../../../utils/privateResolver';
 
 const resolvers: Resolvers = {

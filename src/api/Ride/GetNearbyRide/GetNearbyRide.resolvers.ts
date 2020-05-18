@@ -1,9 +1,9 @@
-import { Resolvers } from 'src/types/resolvers';
 import { Between } from 'typeorm';
 import config from '../../../config';
 import Ride from '../../../entities/Ride';
 import User from '../../../entities/User';
 import { GetNearbyRideResponse } from '../../../types/graph';
+import { Resolvers } from '../../../types/resolvers';
 import privateResolver from '../../../utils/privateResolver';
 
 const resolvers: Resolvers = {
